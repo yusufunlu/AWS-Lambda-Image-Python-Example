@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  This is a SAM template file to build decimal to roman number function
+  it uses python3.8 docker image and put app.py which contains business logic
+  This is a serverless project for Nostos Genomics Interview Progress. 
+  It includes a decimal number to roman number converter AWS lambda function which works as a image not a zip and AWS api gateway to test it easier
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+
+
+Parameters:
+  stackname:
+    Description: Stack name.
+    Default: Nostos-Genomics-Test-Project
+    Type: String
+
+Resources:
+  DecimalToRomanFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      PackageType: Image
+      #ImageUri: 039296889778.dkr.ecr.us-east-1.amazonaws.com/nostos-genomics-repo:latest # must be not be set to use always updated image
+      #PackageType: Zip, default is Zip if not set
+      #CodeUri: DecimalToRomanFunction
+      #Handler: app.lambda_handler
+      #Runtime: python3.8
+      Events:
+        DecimalToRoman:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /decimaltoroman
+            Method: post
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./decimal_to_roman
+      DockerTag: python3.8-v1
+
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  DecimalToRomanApi:
+    Description: "API Gateway endpoint URL for Prod stage for Decimal Number to Roman Number function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/decimaltoroman/"
+  DecimalToRomanFunction:
+    Description: "Decimal to roman Lambda Function ARN"
+    Value: !GetAtt DecimalToRomanFunction.Arn
+  DecimalToRomanFunctionIamRole:
+    Description: "Implicit IAM Role created for Decimal to Roman function"
+    Value: !GetAtt DecimalToRomanFunctionRole.Arn

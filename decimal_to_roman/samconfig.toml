@@ -1,0 +1,13 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "Nostos-Genomics-Project"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1t8jawvkok2fn"
+s3_prefix = "Nostos-Genomics-Project"
+region = "us-east-1"
+profile = "default"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "stackname=\"deneme-stack\""
+image_repositories = ["DecimalToRomanFunction=039296889778.dkr.ecr.us-east-1.amazonaws.com/nostos-genomics-repo"]

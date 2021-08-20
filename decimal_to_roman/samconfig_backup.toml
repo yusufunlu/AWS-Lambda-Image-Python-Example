@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "Nostos-Genomics-Test-Project"
+s3_bucket = "Nostos-Genomics-Test-Project-samclisourcebucket"
+s3_prefix = "Nostos-Genomics-Test-Project"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["DecimalToRomanFunction=039296889778.dkr.ecr.us-east-1.amazonaws.com/nostos-genomics-repo"]
+profile = "default"
