@@ -36,6 +36,8 @@ Resources:
       Dockerfile: Dockerfile
       DockerContext: ./decimal_to_roman
       DockerTag: python3.8-v1
+  #SourceImageBucket:
+  #  Type: 'AWS::S3::Bucket'
 
 
 Outputs:

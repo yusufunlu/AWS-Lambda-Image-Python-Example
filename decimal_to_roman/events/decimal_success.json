@@ -1,5 +1,5 @@
 {
-    "body": "5",
+    "body": "{\"decimal\": \"5\"}",
     "resource": "/{proxy+}",
     "path": "/path/to/resource",
     "httpMethod": "POST",
