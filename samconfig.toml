@@ -9,5 +9,4 @@ region = "us-east-1"
 profile = "default"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
-parameter_overrides = "stackname=\"deneme-stack\""
 image_repositories = ["DecimalToRomanFunction=039296889778.dkr.ecr.us-east-1.amazonaws.com/nostos-genomics-repo"]
