@@ -1,4 +1,4 @@
-# Nostos-Genomics-Interview-Project
+# AWS-Lambda-Image-Python-Example
   This is a SAM template file to build decimal to roman number function
   it uses python3.8 docker image and put app.py which contains business logic
   This is a serverless project for Nostos Genomics Interview Progress. 
